@@ -41,7 +41,7 @@ export const verifyGoogleAuth = async () => {
     console.log(response.data.error);
     return response.data;
   }
-  return response.data.user;
+  return response.data;
 };
 
 export const fetchUserById = async (userId: string) => {
