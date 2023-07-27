@@ -17,7 +17,8 @@ import {
   TbPlus,
   TbMenu2,
   TbX,
-  TbRefresh
+  TbRefresh,
+  TbLogout
 } from 'react-icons/tb';
 import { CgProfile } from 'react-icons/cg';
 import { SiteContext } from '../../context/SiteContext';
@@ -120,7 +121,10 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
                       </Flex>
                     </Flex>
                   ) : (
-                    userInfo.email
+                    <Flex w='100%' justifyContent='space-between'>
+                      <Text>{userInfo.email}</Text>
+                      <TbLogout color='white' />
+                    </Flex>
                   )}
                 </Flex>
                 <Flex
