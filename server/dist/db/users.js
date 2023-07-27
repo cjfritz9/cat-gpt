@@ -2,6 +2,22 @@ import bcrypt from 'bcrypt';
 import db from './db.js';
 export const createUser = async ({ email, password }) => {
     try {
+        const registrationTime = Date();
+        if (password === null) {
+            const users = db.collection('users');
+            const res = await users.add({
+                email,
+                password: 'null',
+                tokens: 10,
+                last_token_refresh: registrationTime
+            });
+            return {
+                id: res.id,
+                email,
+                tokens: 10,
+                last_token_refresh: registrationTime
+            };
+        }
         if (!email || !password) {
             return 'Error: Missing required Email/Password';
         }
@@ -10,7 +26,6 @@ export const createUser = async ({ email, password }) => {
         }
         const SALT_COUNT = 10;
         const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
-        const registrationTime = Date();
         const users = db.collection('users');
         const res = await users.add({
             email,

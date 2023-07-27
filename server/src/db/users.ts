@@ -4,6 +4,22 @@ import db from './db.js';
 
 export const createUser = async ({ email, password }: AccountFields) => {
   try {
+    const registrationTime = Date();
+    if (password === null) {
+      const users: any = db.collection('users');
+      const res: any = await users.add({
+        email,
+        password: 'null',
+        tokens: 10,
+        last_token_refresh: registrationTime
+      });
+      return {
+        id: res.id,
+        email,
+        tokens: 10,
+        last_token_refresh: registrationTime
+      };
+    }
     if (!email || !password) {
       return 'Error: Missing required Email/Password';
     }
@@ -12,7 +28,6 @@ export const createUser = async ({ email, password }: AccountFields) => {
     }
     const SALT_COUNT = 10;
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
-    const registrationTime = Date();
 
     const users: any = db.collection('users');
     const res: any = await users.add({
