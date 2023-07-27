@@ -122,11 +122,12 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
                       </Flex>
                     </Flex>
                   ) : (
-                    <Flex w='100%' justifyContent='space-between'>
-                      <Text
-                        w='100%'
-                        textAlign='left'
-                      >
+                    <Flex
+                      w='100%'
+                      justifyContent='space-between'
+                      alignItems='center'
+                    >
+                      <Text w='100%' textAlign='left'>
                         {(userInfo.email as string).length > 20
                           ? userInfo.email.slice(0, 17) + '...'
                           : userInfo.email}
@@ -264,17 +265,18 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
                     </Flex>
                   </Flex>
                 ) : (
-                  <Flex w='100%' justifyContent='space-between'>
-                  <Text
+                  <Flex
                     w='100%'
-                    textAlign='left'
+                    justifyContent='space-between'
+                    alignItems='center'
                   >
-                    {(userInfo.email as string).length > 20
-                      ? userInfo.email.slice(0, 17) + '...'
-                      : userInfo.email}
-                  </Text>
-                  <Icon color='white' as={TbLogout} />
-                </Flex>
+                    <Text w='100%' textAlign='left'>
+                      {(userInfo.email as string).length > 20
+                        ? userInfo.email.slice(0, 17) + '...'
+                        : userInfo.email}
+                    </Text>
+                    <Icon color='white' as={TbLogout} />
+                  </Flex>
                 )}
               </Flex>
               <Flex
