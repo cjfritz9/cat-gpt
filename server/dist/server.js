@@ -1,4 +1,3 @@
-import http from 'http';
 import https from 'https';
 import path from 'path';
 import fs from 'fs';
@@ -14,7 +13,7 @@ const server = process.env.NODE_ENV === 'development'
         key: fs.readFileSync(path.join(__dirname, 'ssl', 'key.pem')),
         cert: fs.readFileSync(path.join(__dirname, 'ssl', 'cert.pem'))
     }, app)
-    : http.createServer(app);
+    : https.createServer(app);
 server.listen(PORT, () => {
     console.log('Server listening on port: ' + PORT);
 });

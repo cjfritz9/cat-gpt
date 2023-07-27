@@ -1,4 +1,3 @@
-import http from 'http';
 import https from 'https';
 import path from 'path';
 import fs from 'fs';
@@ -20,7 +19,7 @@ const server =
         },
         app
       )
-    : http.createServer(app);
+    : https.createServer(app);
 
 server.listen(PORT, () => {
   console.log('Server listening on port: ' + PORT);
