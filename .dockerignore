@@ -1,6 +1,7 @@
 .vscode
 *app.yaml
 *.env*
+*node_modules*
 server/src/
 server/dist/__tests__
 server/dist/models

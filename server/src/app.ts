@@ -54,6 +54,7 @@ app.use(
     origin: '*'
   })
 );
+app.enable('trust proxy');
 app.use(helmet());
 app.use(
   cookieSession({

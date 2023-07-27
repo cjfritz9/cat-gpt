@@ -39,6 +39,7 @@ passport.deserializeUser((obj, done) => {
 app.use(cors({
     origin: '*'
 }));
+app.enable('trust proxy');
 app.use(helmet());
 app.use(cookieSession({
     name: 'session',
