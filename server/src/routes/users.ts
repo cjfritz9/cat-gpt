@@ -62,7 +62,7 @@ usersRouter.get('/auth/google', async (req, res) => {
     // @ts-ignore
     if (!req.user || !req.user.email) {
       res.send({
-        error: 'No user data was saved'
+        error: 'No user received from Google'
       });
     } else {
       //@ts-ignore
