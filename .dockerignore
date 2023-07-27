@@ -1,0 +1,7 @@
+.vscode
+*app.yaml
+*.env*
+server/src/
+server/dist/__tests__
+server/dist/models
+client/
