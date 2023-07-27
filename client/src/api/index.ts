@@ -2,7 +2,8 @@ import axios from 'axios';
 import { UserCredentials } from '../models/interfaces';
 import { ChatRequest } from '../models/types';
 
-const BASE_URL = 'https://open-ai-server.uc.r.appspot.com/api/chat-app';
+// const BASE_URL = 'https://open-ai-server.uc.r.appspot.com/api';
+const BASE_URL = 'https://localhost:8080/api';
 
 // USER FUNCTIONS
 export const registerUser = async (userInputs: UserCredentials) => {
@@ -31,6 +32,16 @@ export const loginUser = async (userInputs: UserCredentials) => {
     }
     return response.data.user;
   }
+};
+
+export const verifyGoogleAuth = async () => {
+  console.log('in verify google auth function');
+  const response = await axios.get(`${BASE_URL}/users/auth/google`);
+  if (response.data.error) {
+    console.log(response.data.error);
+    return response.data;
+  }
+  return response.data.user;
 };
 
 export const fetchUserById = async (userId: string) => {

@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import {
   authenticateUser,
   createUser,
+  getUserByEmail,
   getUserById
 } from '../db/users.js';
 const usersRouter = express.Router();
@@ -47,6 +48,30 @@ usersRouter.post('/login', async (req: Request, res: Response) => {
         success: 'Authentication successful',
         user
       });
+    }
+  } catch (err) {
+    console.error(err);
+    res.send({
+      error: err
+    });
+  }
+});
+
+usersRouter.get('/auth/google', async (req, res) => {
+  try {
+    // @ts-ignore
+    if (!req.user || !req.user.email) {
+      res.send({
+        error: 'No user data was saved'
+      });
+    } else {
+      //@ts-ignore
+      let user = await getUserByEmail(req.user.email);
+      if (typeof user === 'string') {
+        //@ts-ignore
+        user = await createUser({ email: req.user.email, password: null });
+      }
+      res.send({ userInfo: user, loggedIn: true });
     }
   } catch (err) {
     console.error(err);

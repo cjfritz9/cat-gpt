@@ -1,5 +1,6 @@
 import { Stack } from '@chakra-ui/react';
 import { Route, Routes, useRoutes } from 'react-router-dom';
+import GoogleAuth from './auth/_OAuth2.Google';
 import Chat from './pages/Chat';
 import LoginRegister from './pages/LoginRegister';
 
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Route path='/' element={<LoginRegister />} />
         <Route path='/login' element={<LoginRegister />} />
         <Route path='/register' element={<LoginRegister />} />
+        <Route path='/login/oauth/google' element={<GoogleAuth />} />
         <Route path='/chat' element={<Chat />} />
       </Routes>
     </Stack>

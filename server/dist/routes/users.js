@@ -1,5 +1,5 @@
 import express from 'express';
-import { authenticateUser, createUser, getUserById } from '../db/users.js';
+import { authenticateUser, createUser, getUserByEmail, getUserById } from '../db/users.js';
 const usersRouter = express.Router();
 usersRouter.get('/:id', async (req, res) => {
     try {
@@ -42,6 +42,31 @@ usersRouter.post('/login', async (req, res) => {
                 success: 'Authentication successful',
                 user
             });
+        }
+    }
+    catch (err) {
+        console.error(err);
+        res.send({
+            error: err
+        });
+    }
+});
+usersRouter.get('/auth/google', async (req, res) => {
+    try {
+        // @ts-ignore
+        if (!req.user || !req.user.email) {
+            res.send({
+                error: 'No user data was saved'
+            });
+        }
+        else {
+            //@ts-ignore
+            let user = await getUserByEmail(req.user.email);
+            if (typeof user === 'string') {
+                //@ts-ignore
+                user = await createUser({ email: req.user.email, password: null });
+            }
+            res.send({ userInfo: user, loggedIn: true });
         }
     }
     catch (err) {
