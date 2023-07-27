@@ -13,7 +13,7 @@ const server = process.env.NODE_ENV === 'development'
         key: fs.readFileSync(path.join(__dirname, 'ssl', 'key.pem')),
         cert: fs.readFileSync(path.join(__dirname, 'ssl', 'cert.pem'))
     }, app)
-    : https.createServer(app);
+    : app;
 server.listen(PORT, () => {
     console.log('Server listening on port: ' + PORT);
 });
