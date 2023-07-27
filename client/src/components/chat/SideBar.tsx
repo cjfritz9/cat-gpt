@@ -24,6 +24,7 @@ import { CgProfile } from 'react-icons/cg';
 import { SiteContext } from '../../context/SiteContext';
 import { refreshTokensByUserId } from '../../api';
 import { ChatWindowProps } from '../../models/props';
+import { isRouteErrorResponse } from 'react-router-dom';
 
 const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
   const { userInfo, setUserInfo, setIsLoggedIn } = useContext<any>(SiteContext);
@@ -122,8 +123,15 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
                     </Flex>
                   ) : (
                     <Flex w='100%' justifyContent='space-between'>
-                      <Text w='100%' maxW='212px' overflowX='clip' textAlign='left'>
-                        {userInfo.email}
+                      <Text
+                        w='100%'
+                        maxW='212px'
+                        overflowX='clip'
+                        textAlign='left'
+                      >
+                        {(userInfo.email as string).length > 20
+                          ? userInfo.email.slice(0, 16) + '...'
+                          : userInfo.email}
                       </Text>
                       <Icon top='50%' right='0' color='white' as={TbLogout} />
                     </Flex>
@@ -259,8 +267,15 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
                   </Flex>
                 ) : (
                   <Flex w='100%' justifyContent='space-between'>
-                    <Text w='100%' maxW='212px' overflowX='clip' textAlign='left'>
-                      {userInfo.email}
+                    <Text
+                      w='100%'
+                      maxW='212px'
+                      overflowX='clip'
+                      textAlign='left'
+                    >
+                      {(userInfo.email as string).length > 20
+                        ? userInfo.email.slice(0, 16) + '...'
+                        : userInfo.email}
                     </Text>
                     <Icon top='50%' right='0' color='white' as={TbLogout} />
                   </Flex>
