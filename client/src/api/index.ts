@@ -41,6 +41,7 @@ export const verifyGoogleAuth = async () => {
     console.log(response.data.error);
     return response.data;
   }
+  console.log('axios data: ', response.data);
   return response.data;
 };
 
