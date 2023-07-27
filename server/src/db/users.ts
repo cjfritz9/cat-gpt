@@ -2,11 +2,11 @@ import { AccountFields } from '../models/interfaces.js';
 import bcrypt from 'bcrypt';
 import db from './db.js';
 
-export const createUser = async ({ email, password }: AccountFields) => {
+export const createUser = async ({ email, password, isSSO = false }: AccountFields) => {
   try {
     const registrationTime = Date();
-    if (password === null) {
-      const users: any = db.collection('users');
+    const users: any = db.collection('users');
+    if (isSSO) {
       const res: any = await users.add({
         email,
         password: 'null',
@@ -29,7 +29,6 @@ export const createUser = async ({ email, password }: AccountFields) => {
     const SALT_COUNT = 10;
     const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
 
-    const users: any = db.collection('users');
     const res: any = await users.add({
       email,
       password: hashedPassword,

@@ -11,6 +11,7 @@ interface UserData {
 export interface AccountFields {
   email: string;
   password: string;
+  isSSO?: boolean;
 }
 
 export default UserData;

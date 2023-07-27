@@ -1,10 +1,10 @@
 import bcrypt from 'bcrypt';
 import db from './db.js';
-export const createUser = async ({ email, password }) => {
+export const createUser = async ({ email, password, isSSO = false }) => {
     try {
         const registrationTime = Date();
-        if (password === null) {
-            const users = db.collection('users');
+        const users = db.collection('users');
+        if (isSSO) {
             const res = await users.add({
                 email,
                 password: 'null',
@@ -26,7 +26,6 @@ export const createUser = async ({ email, password }) => {
         }
         const SALT_COUNT = 10;
         const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
-        const users = db.collection('users');
         const res = await users.add({
             email,
             password: hashedPassword,
