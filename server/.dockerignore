@@ -1,6 +1,7 @@
 .vscode
 *app.yaml
 *.env*
+src/
 dist/__tests__
 dist/models
 dist/ssl
