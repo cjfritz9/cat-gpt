@@ -14,10 +14,13 @@ import {
 } from '@chakra-ui/react';
 import { verifyGoogleAuth } from '../../api';
 import { SiteContext } from '../../context/SiteContext';
+import { useNavigate } from 'react-router-dom';
 
 const GoogleAuth: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { setIsLoggedIn, setUserInfo } = useContext<any>(SiteContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -27,6 +30,11 @@ const GoogleAuth: React.FC = () => {
       console.log('userInfo - component: ', user.userInfo);
       setIsLoggedIn(user.loggedIn);
       setUserInfo(user.userInfo);
+      setIsLoading(true);
+      setTimeout(() => {
+        navigate('/chat');
+        setIsLoading(false);
+      }, 1000);
     })();
   }, []);
 
