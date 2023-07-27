@@ -125,7 +125,7 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
                       <Text w='100%' overflowX='clip'>
                         {userInfo.email}
                       </Text>
-                      <Icon top='25%' right='0' color='white' as={TbLogout} />
+                      <Icon top='50%' right='0' color='white' as={TbLogout} />
                     </Flex>
                   )}
                 </Flex>
@@ -262,7 +262,7 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
                     <Text w='100%' overflowX='clip'>
                       {userInfo.email}
                     </Text>
-                    <Icon top='25%' right='0' color='white' as={TbLogout} />
+                    <Icon top='50%' right='0' color='white' as={TbLogout} />
                   </Flex>
                 )}
               </Flex>
