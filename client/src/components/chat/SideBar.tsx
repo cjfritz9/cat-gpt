@@ -256,7 +256,15 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
                     </Flex>
                   </Flex>
                 ) : (
-                  userInfo.email
+                  <Flex pos='relative' w='100%' justifyContent='space-between'>
+                    <Text>{userInfo.email}</Text>
+                    <Icon
+                      pos='absolute'
+                      right='0'
+                      color='white'
+                      as={TbLogout}
+                    />
+                  </Flex>
                 )}
               </Flex>
               <Flex
