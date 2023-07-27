@@ -66,6 +66,7 @@ export const getUserByEmail = async (email) => {
     try {
         const users = db.collection('users');
         const snapshot = await users.where('email', '==', email).get();
+        console.log('snapshot get user by email', snapshot);
         if (!snapshot)
             return 'Error: No user found';
         let user = {};

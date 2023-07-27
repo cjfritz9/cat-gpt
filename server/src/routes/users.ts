@@ -68,7 +68,7 @@ usersRouter.get('/auth/google', async (req, res) => {
       //@ts-ignore
       let user = await getUserByEmail(req.user.email);
       console.log('user from get user', user);
-      if (typeof user === 'string') {
+      if (!user || typeof user === 'string') {
         user = await createUser({
           //@ts-ignore
           email: req.user.email,
