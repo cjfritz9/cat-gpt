@@ -2,8 +2,7 @@ import axios from 'axios';
 import { UserCredentials } from '../models/interfaces';
 import { ChatRequest } from '../models/types';
 
-const BASE_URL = 'https://gat-gpt-5wee52lw2a-uc.a.run.app/api';
-// const BASE_URL = 'https://localhost:8080/api';
+const BASE_URL = 'https://catgpt.fritzdesign.co/api';
 
 // USER FUNCTIONS
 export const registerUser = async (userInputs: UserCredentials) => {
