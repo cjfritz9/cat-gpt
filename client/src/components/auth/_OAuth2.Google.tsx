@@ -55,8 +55,9 @@ const GoogleAuth: React.FC = () => {
         gap='2rem'
         justifyContent={['top', 'center']}
       >
-        <Heading variant='authHeading'>Creating Account</Heading>
-        <Spinner />
+        <Stack justifyContent='center' alignItems='center' minH='400px'>
+          <Spinner />
+        </Stack>
       </Stack>
     </Container>
   );
