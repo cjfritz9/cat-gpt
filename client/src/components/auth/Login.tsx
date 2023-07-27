@@ -28,11 +28,6 @@ const Login: React.FC<LoginRegisterProps> = ({ setFormState }) => {
     useContext<any>(SiteContext);
   const navigate = useNavigate();
 
-  const BASE_URL =
-    process.env.NODE_ENV === 'development'
-      ? 'https://localhost:8080'
-      : 'https://cat-gpt-5wee52lw2a-uc.a.run.app';
-
   const handleSuccess = () => {
     setIsLoggedIn(true);
     setSuccess(true);
@@ -80,7 +75,7 @@ const Login: React.FC<LoginRegisterProps> = ({ setFormState }) => {
   };
 
   const handleGoogleAuth = () => {
-    window.location.href = BASE_URL + '/api/auth/google/callback';
+    window.location.href = '/api/auth/google/callback';
   };
 
   useEffect(() => {
