@@ -66,6 +66,7 @@ usersRouter.get('/auth/google', async (req, res) => {
                 //@ts-ignore
                 user = await createUser({ email: req.user.email, password: null });
             }
+            console.log('user from db: ', user);
             res.send({ userInfo: user, loggedIn: true });
         }
     }
