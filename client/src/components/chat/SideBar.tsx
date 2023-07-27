@@ -122,8 +122,10 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
                     </Flex>
                   ) : (
                     <Flex w='100%' justifyContent='space-between'>
-                      <Text>{userInfo.email}</Text>
-                      <TbLogout color='white' />
+                      <Text w='100%' overflowX='clip'>
+                        {userInfo.email}
+                      </Text>
+                      <Icon top='25%' right='0' color='white' as={TbLogout} />
                     </Flex>
                   )}
                 </Flex>
@@ -256,14 +258,11 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
                     </Flex>
                   </Flex>
                 ) : (
-                  <Flex pos='relative' w='100%' justifyContent='space-between'>
-                    <Text>{userInfo.email}</Text>
-                    <Icon
-                      pos='absolute'
-                      right='0'
-                      color='white'
-                      as={TbLogout}
-                    />
+                  <Flex w='100%' justifyContent='space-between'>
+                    <Text w='100%' overflowX='clip'>
+                      {userInfo.email}
+                    </Text>
+                    <Icon top='25%' right='0' color='white' as={TbLogout} />
                   </Flex>
                 )}
               </Flex>
