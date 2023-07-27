@@ -2,10 +2,16 @@ import { AccountFields } from '../models/interfaces.js';
 import bcrypt from 'bcrypt';
 import db from './db.js';
 
-export const createUser = async ({ email, password, isSSO = false }: AccountFields) => {
+export const createUser = async ({
+  email,
+  password,
+  isSSO = false
+}: AccountFields) => {
   try {
     const registrationTime = Date();
     const users: any = db.collection('users');
+    console.log('FIELDS - createUser');
+    console.log(email, password, isSSO);
     if (isSSO) {
       const res: any = await users.add({
         email,
