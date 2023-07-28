@@ -6,19 +6,12 @@ authRouter.get('/logout', async (req, res) => {
     req.logout();
     return res.send({ success: 'Logout successful' });
 });
-authRouter.get('/google', passport.authenticate('google', {
-    scope: ['email']
-}), async (req, res) => {
-    res.send(req.originalUrl);
-    console.log('Google response successful');
-});
 authRouter.get('/google/callback', passport.authenticate('google', {
     failureRedirect: '/failure',
     successRedirect: '/login/oauth/google',
     // session: true | default
     scope: ['email']
-}), (req, res) => {
-    console.log('Google response successful');
-    res.send(req.originalUrl);
+}), (_req, res) => {
+    res.send({ success: 'Google response successful' });
 });
 export default authRouter;

@@ -65,7 +65,6 @@ tokensRouter.post('/add', async (req, res) => {
         }
         else {
             const user = response;
-            console.log(user);
             res.send({
                 success: `Tokens added for user ${userId}`,
                 user

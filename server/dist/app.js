@@ -21,8 +21,7 @@ const config = {
         KEY_2: process.env.COOKIE_KEY_2
     }
 };
-const verifyCallback = (accessToken, _refreshToken, profile, done) => {
-    console.log('token: ', accessToken);
+const verifyCallback = (_accessToken, _refreshToken, profile, done) => {
     done(null, profile);
 };
 // Save the session to the Cookie

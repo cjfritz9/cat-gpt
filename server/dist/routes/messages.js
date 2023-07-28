@@ -15,8 +15,6 @@ messagesRouter.post('/send', async (req, res) => {
             res.send({ error: 'Server Error, Wait and Try Again' });
         }
         else {
-            console.log(response.data.choices[0].message?.content);
-            console.log(response.data.choices);
             res.send({ success: response.data.choices[0].message?.content });
         }
     }

@@ -41,13 +41,11 @@ export const logoutUser = async () => {
 };
 
 export const verifyGoogleAuth = async () => {
-  console.log('in verify google auth function');
   const response = await axios.get(`${BASE_URL}/users/auth/google`);
   if (response.data.error) {
     console.log(response.data.error);
     return response.data;
   }
-  console.log('axios data: ', response.data);
   return response.data;
 };
 
@@ -107,7 +105,6 @@ export const refreshTokensByUserId = async (userId: number) => {
       console.log(response.data.error);
       return response.data;
     }
-    console.log(response.data);
     return response.data;
   }
 };

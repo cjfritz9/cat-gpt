@@ -27,12 +27,11 @@ const config = {
 };
 
 const verifyCallback = (
-  accessToken: string,
+  _accessToken: string,
   _refreshToken: string,
   profile: any,
   done: Function
 ) => {
-  console.log('token: ', accessToken);
   done(null, profile);
 };
 

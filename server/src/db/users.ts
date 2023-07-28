@@ -10,8 +10,6 @@ export const createUser = async ({
   try {
     const registrationTime = Date();
     const users: any = db.collection('users');
-    console.log('FIELDS - createUser');
-    console.log(email, password, isSSO);
     if (isSSO) {
       const res: any = await users.add({
         email,

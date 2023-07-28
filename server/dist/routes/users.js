@@ -72,8 +72,7 @@ usersRouter.get('/auth/google', async (req, res) => {
                     isSSO: true
                 });
             }
-            console.log('user from db: ', await user);
-            res.send({ userInfo: await user, loggedIn: true });
+            res.send({ userInfo: user, loggedIn: true });
         }
     }
     catch (err) {
