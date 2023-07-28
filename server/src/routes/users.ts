@@ -1,10 +1,12 @@
 import express, { Request, Response } from 'express';
+import dotenv from 'dotenv';
 import {
   authenticateUser,
   createUser,
   getUserByEmail,
   getUserById
 } from '../db/users.js';
+dotenv.config();
 const usersRouter = express.Router();
 
 usersRouter.get('/:id', async (req: Request, res: Response) => {
@@ -67,12 +69,11 @@ usersRouter.get('/auth/google', async (req, res) => {
     } else {
       //@ts-ignore
       let user = await getUserByEmail(req.user.email);
-      console.log('user from get user', user);
       if (typeof user === 'string') {
         user = await createUser({
           //@ts-ignore
           email: req.user.email,
-          password: 'null',
+          password: process.env.GOOGLE_OAUTH_PASSWORD!,
           isSSO: true
         });
       }
