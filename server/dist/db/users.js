@@ -9,7 +9,7 @@ export const createUser = async ({ email, password, isSSO = false }) => {
         if (isSSO) {
             const res = await users.add({
                 email,
-                password: 'null',
+                password,
                 tokens: 10,
                 last_token_refresh: registrationTime
             });
