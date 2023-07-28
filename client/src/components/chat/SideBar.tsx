@@ -165,7 +165,7 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
                 <Flex
                   as={Link}
                   isExternal
-                  href='https://paypal.me/devcjfritz?country.x=US&locale.x=en_US'
+                  href='https://ko-fi.com/devcjfritz'
                   _hover={{ bgColor: 'Brand.Agate.99' }}
                   px='1rem'
                   py='.5rem'
@@ -307,7 +307,7 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
               <Flex
                 as={Link}
                 isExternal
-                href='https://paypal.me/devcjfritz?country.x=US&locale.x=en_US'
+                href='https://ko-fi.com/devcjfritz'
                 _hover={{ bgColor: 'Brand.Agate.99' }}
                 px='1rem'
                 py='.5rem'
