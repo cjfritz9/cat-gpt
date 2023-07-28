@@ -2,7 +2,9 @@ import express from 'express';
 import passport from 'passport';
 const authRouter = express.Router();
 authRouter.get('/logout', async (req, res) => {
-    res.send(req.originalUrl);
+    //@ts-ignore
+    req.logout();
+    return res.send({ success: 'Logout successful' });
 });
 authRouter.get('/google', passport.authenticate('google', {
     scope: ['email']

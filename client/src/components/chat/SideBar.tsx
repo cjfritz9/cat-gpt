@@ -22,7 +22,7 @@ import {
 } from 'react-icons/tb';
 import { CgProfile } from 'react-icons/cg';
 import { SiteContext } from '../../context/SiteContext';
-import { refreshTokensByUserId } from '../../api';
+import { logoutUser, refreshTokensByUserId } from '../../api';
 import { ChatWindowProps } from '../../models/props';
 import { isRouteErrorResponse } from 'react-router-dom';
 
@@ -50,7 +50,8 @@ const SideBar: React.FC<ChatWindowProps> = ({ setWindowState }) => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await logoutUser();
     localStorage.removeItem('user_id');
     setShowLogoutConfirmation(false);
     setIsLoggedIn(false);

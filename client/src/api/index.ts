@@ -33,6 +33,13 @@ export const loginUser = async (userInputs: UserCredentials) => {
   }
 };
 
+export const logoutUser = async () => {
+  const response = await axios.get(`${BASE_URL}/auth/logout`);
+  if (response.data && response.data.success) {
+    return response.data.success;
+  }
+};
+
 export const verifyGoogleAuth = async () => {
   console.log('in verify google auth function');
   const response = await axios.get(`${BASE_URL}/users/auth/google`);
