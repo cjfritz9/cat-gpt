@@ -28,11 +28,6 @@ export class SiteProvider extends React.Component {
 
   setUserInfo = (info: UserInfo) => {
     this.setState({ userInfo: info });
-    console.log(
-      'info and info.id [in setUserInfo useContext]: ',
-      info,
-      info.id
-    );
     localStorage.setItem('user_id', info.id);
   };
 

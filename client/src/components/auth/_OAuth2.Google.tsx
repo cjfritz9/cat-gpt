@@ -25,9 +25,6 @@ const GoogleAuth: React.FC = () => {
   useEffect(() => {
     (async () => {
       const user = await verifyGoogleAuth();
-      console.log('user data in component', user);
-      console.log('logged in - component: ', user.loggedIn);
-      console.log('userInfo - component: ', user.userInfo);
       setIsLoggedIn(user.loggedIn);
       setUserInfo(user.userInfo);
       setIsLoading(true);
