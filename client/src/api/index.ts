@@ -2,7 +2,7 @@ import axios from 'axios';
 import { UserCredentials } from '../models/interfaces';
 import { ChatRequest } from '../models/types';
 
-const BASE_URL = 'api';
+const BASE_URL = `${window.location.origin}/api`;
 
 // USER FUNCTIONS
 export const registerUser = async (userInputs: UserCredentials) => {
